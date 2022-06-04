@@ -1,0 +1,40 @@
+.nav{
+  position: fixed;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  padding: 10px 10vw; 
+  background: rgb(123, 35, 18); 
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  z-index: 50;
+}
+
+.cart-total-wrapper{
+  background: rgb(70, 22, 12);
+  padding: 10px 40px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  border: none; 
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all ;
+  transition: transform 200ms ;
+}
+
+.cart-total-wrapper:hover{
+  transform: scale(1.1);
+}
+
+.cart-total{
+  background: rgb(123, 35, 18); 
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+}

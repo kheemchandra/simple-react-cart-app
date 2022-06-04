@@ -1,0 +1,13 @@
+.order-list{
+  background: white; 
+  border-radius: 12px;
+  position: relative;
+  top: -90px;
+  margin: auto;
+  width: 85%;
+  max-width: 850px;
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
