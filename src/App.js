@@ -1,9 +1,10 @@
-import React, { useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 
 import Nav from './components/Nav/Nav';
 import Header from './components/Header/Header';
 import OrderItemList from './components/Order/OrderItemList/OrderItemList';
 import Overlay from './components/Overlay/Overlay';
+import Form from './components/Form';
 
 const items = [
   {name: 'Sushi', description: 'Finest fish and veggies', price: "22.99"},
@@ -12,20 +13,25 @@ const items = [
   {name: 'Green Bowl', description: 'Healthy...and green...', price: "18.99"},
 ];
 
-const cartReducer = (state, action) => {
-  return {quantity: state.quantity + action.value }
-}
+
 
 function App() {
 
-  const [ cartQuantity, dispatchCartQuantity ] = useReducer(cartReducer, {quantity: 0});
+  const [ quantity, setQuantity ] = useState(0);
+
+  const addQuantityHandler = (value) => {
+    setQuantity((prev) => {
+      return prev + value;
+    });
+  };
 
   return (
     <>
-      <Nav quantity={cartQuantity.quantity} />
+      <Nav quantity={quantity} />
       <Header />
-      <OrderItemList addItem={dispatchCartQuantity} items={items} /> 
+      <OrderItemList addItem={addQuantityHandler} items={items} /> 
       {/* <Overlay /> */}
+      {/* <Form /> */}
     </>
   );
 }
