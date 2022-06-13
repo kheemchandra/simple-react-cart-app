@@ -3,25 +3,24 @@ import React, { useState } from "react";
 import Button from "../../UI/Button/Button";
 
 import cls from "./OrderItem.module.css";
-
-let value = 1;
+ 
 
 const OrderItem = (props) => {
-  const [amount, setAmount] = useState(1);
+  const[amount, setAmount] = useState(1);
+  const o = props.obj[props.id]; 
 
   const addItemHandler = (event) => {
     event.preventDefault();
-    let val = +event.target.elements[0].value;
-    props.addItem(val);
+    let value = +event.target.elements[0].value;   
+    o.func(o.value + amount);
+    // o.func(o.value + value);
   };
 
   const changeAmountHandler = (event) => {
     let value = +event.target.value;
     setAmount(value);
   };
-
-  console.log('Orderitem value: ', amount);
-
+ 
   return (
     <li className={cls["order"]}>
       <ul className={cls["order-left"]}>

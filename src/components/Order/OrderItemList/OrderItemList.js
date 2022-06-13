@@ -8,7 +8,10 @@ const OrderItemList = (props) => {
   let orders = props.items.map((item) => {
     return (
       <OrderItem addItem={props.addItem}
-      key={Math.random().toString()}
+      F={props.F}
+      obj={props.obj}
+      key={item.id}
+      id={item.id}
       name={item.name}
       description={item.description}
       price={item.price}

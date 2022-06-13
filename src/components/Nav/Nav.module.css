@@ -28,7 +28,7 @@
   transition: transform 200ms ;
 }
 
-.cart-total-wrapper:hover{
+.cart-total-wrappermnn:hover{
   transform: scale(1.1);
 }
 
@@ -37,4 +37,19 @@
   display: inline-block;
   padding: 5px 15px;
   border-radius: 20px;
+}
+
+
+.scale{
+  animation-duration: .15s;
+  animation-name: scaleInOut;
+}
+
+@keyframes scaleInOut {
+  50%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  }
 }
