@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React from "react";
 
 import cls from "./Nav.module.css";
 
-const reducerQ = (state, action) => {
-  return {quantity: state.quantity + action};
-};
 
-const Nav = (props) => {   
+
+const Nav = (props) => {  
+  
+  const addOverlayHandler = (event) => {
+    props.clsO[1](props.arr1[0]);    
+  };
 
   return (
     <nav className={cls.nav}>
       <h1>ReactMeals</h1>
-      <button className={props.clsN}>
+      <button onClick={addOverlayHandler} className={props.clsN}>
         <span className="material-symbols-outlined ">shopping_cart</span>
         Your Cart
         <span className={cls['cart-total']}>{props.Q}</span>

@@ -11,9 +11,7 @@ const OrderItem = (props) => {
 
   const addItemHandler = (event) => {
     event.preventDefault();
-    let value = +event.target.elements[0].value;   
     o.func(o.value + amount);
-    // o.func(o.value + value);
   };
 
   const changeAmountHandler = (event) => {

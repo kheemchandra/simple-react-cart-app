@@ -7,14 +7,14 @@ const CartItem = (props) => {
     <li className={cls["cartitem"]}>
       <ul className={cls["cartitem-left"]}>
         <li>
-          <h3>Schnitzel</h3>
+          <h3>{props.name}</h3>
         </li>
         <ul className={cls["cartitem-left-lower"]}>
           <li>
-            <span className={cls["cartitem-price"]}>$16.5</span>
+            <span className={cls["cartitem-price"]}>${props.price}</span>
           </li>
           <li>
-            <span className={cls["cartitem-quantity"]}>x 2</span>
+            <span className={cls["cartitem-quantity"]}>x {props.quantity}</span>
           </li>
         </ul>
       </ul>

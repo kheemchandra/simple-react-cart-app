@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import Nav from "./components/Nav/Nav";
 import Header from "./components/Header/Header";
@@ -6,10 +6,16 @@ import OrderItemList from "./components/Order/OrderItemList/OrderItemList";
 import Overlay from "./components/Overlay/Overlay";
 
 import cls from "./components/Nav/Nav.module.css";
+import cls1 from './components/Overlay/Overlay.module.css';
 
 const arr = [
   cls["cart-total-wrapper"],
   cls["cart-total-wrapper"] + " " + cls["scale"],
+];
+
+const arr1 = [
+  cls1['overlay'], 
+  cls1['overlay'] + ' ' + cls1['hidden']
 ];
 
 const items = [
@@ -49,6 +55,8 @@ function App() {
 
   const [clsN, setClsN] = useState(arr[0]);
 
+  const clsO = useState(arr1[1]);
+
   const isMounted  = useRef(false);
 
   let obj = {
@@ -69,6 +77,8 @@ function App() {
       func: setItem4,
     },
   };
+
+  
 
   useEffect(() => {
     let ans = 0;
@@ -92,10 +102,11 @@ function App() {
 
   return (
     <>
-      <Nav Q={Q} clsN={clsN} />
+      {/* <Nav Q={Q} clsN={clsN} /> */}
+      <Nav  arr1={arr1} clsO={clsO} Q={Q} clsN={clsN} />
       <Header />
       <OrderItemList obj={obj} items={items} />
-      {/* <Overlay /> */} 
+      <Overlay items={items} obj={obj}  arr1={arr1} clsO={clsO} /> 
     </>
   );
 }

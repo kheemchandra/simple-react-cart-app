@@ -5,16 +5,14 @@ import CartItemList from "../Cart/CartItemList/CartItemList";
 
 import cls from "./Overlay.module.css";
 
-const Overlay = (props) => {
-  return (
-    <>
-      <button id="btn">Click here</button>
+const Overlay = (props) => { 
 
-      <div className={cls["overlay"]}></div>
+  return (
+    <div className={props.clsO[0]}>
       <Card className={cls["modal"]}>
-        <CartItemList />
+        <CartItemList items={props.items} obj={props.obj}  arr1={props.arr1} clsO={props.clsO} />
       </Card>
-    </>
+    </div>
   );
 };
 

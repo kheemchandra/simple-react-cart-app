@@ -28,8 +28,9 @@
   transition: transform 200ms ;
 }
 
-.cart-total-wrappermnn:hover{
-  transform: scale(1.1);
+.cart-total-wrapper:hover{
+  background: rgb(47, 15, 8); 
+  
 }
 
 .cart-total{
