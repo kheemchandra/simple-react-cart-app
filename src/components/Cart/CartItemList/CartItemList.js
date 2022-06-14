@@ -32,6 +32,7 @@ const CartItemList = (props) => {
 
   const removeOverlayHandler = (event) => {
     props.clsO[1](props.arr1[1]);
+    document.body.style.overflowY = 'auto';
   };
 
   const cartOrderHandler = (event) => {

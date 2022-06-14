@@ -8,6 +8,7 @@ const Nav = (props) => {
   
   const addOverlayHandler = (event) => {
     props.clsO[1](props.arr1[0]);    
+    document.body.style.overflowY = 'hidden';
   };
 
   return (
