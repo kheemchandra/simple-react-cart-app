@@ -7,7 +7,6 @@ import cls from "./CartItemList.module.css";
 const CartItemList = (props) => {
   let totalCost = 0;
   let content = [];
-  let obj = props.obj;
   const entries = Object.entries(props.obj);
   entries.forEach((entry) => {
     let id = entry[0];
@@ -20,6 +19,7 @@ const CartItemList = (props) => {
 
       content.push(
         <CartItem
+          dispatchCartQ={props.dispatchCartQ}
           changeQuantity={props.obj[id]["func"]}
           key={item.id}
           name={item.name}

@@ -7,8 +7,8 @@ import cls from "./OrderItemList.module.css";
 const OrderItemList = (props) => {
   let orders = props.items.map((item) => {
     return (
-      <OrderItem addItem={props.addItem}
-      F={props.F}
+      <OrderItem
+      dispatchCartQ={props.dispatchCartQ}
       obj={props.obj}
       key={item.id}
       id={item.id}

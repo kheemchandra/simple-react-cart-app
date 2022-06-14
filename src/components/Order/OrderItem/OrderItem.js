@@ -12,6 +12,7 @@ const OrderItem = (props) => {
   const addItemHandler = (event) => {
     event.preventDefault();
     o.func(o.value + amount);
+    props.dispatchCartQ(amount);
   };
 
   const changeAmountHandler = (event) => {

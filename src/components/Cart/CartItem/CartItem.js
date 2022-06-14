@@ -6,10 +6,12 @@ const CartItem = (props) => {
 
   const decreaseCartItemHandler = (event) => {
     props.changeQuantity(q => q-1);
+    props.dispatchCartQ(-1);
   };
 
   const increaseCartItemHandler = (event) => {
     props.changeQuantity(q => q+1);
+    props.dispatchCartQ(1);
   };
 
   return (

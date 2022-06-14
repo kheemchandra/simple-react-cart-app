@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useReducer, useEffect, useRef } from "react";
 
 import Nav from "./components/Nav/Nav";
 import Header from "./components/Header/Header";
@@ -45,9 +45,14 @@ const items = [
   },
 ];
 
+const cartReducer = (state, action) => {
+  return { quantity: state.quantity + action}
+};
 
 function App() {
-  const [Q, setQ] = useState(0);
+
+  const [cartQ, dispatchCartQ] = useReducer(cartReducer, {quantity: 0});
+
   const [item1, setItem1] = useState(0);
   const [item2, setItem2] = useState(0);
   const [item3, setItem3] = useState(0);
@@ -80,15 +85,6 @@ function App() {
   };
 
   
-
-  useEffect(() => {
-    let ans = 0;
-    for (let x in obj) {
-      ans += obj[x]["value"];
-    }
-    setQ(ans);
-  }, [obj]);
-
   useEffect(() => {
     if(isMounted.current){
       setClsN(arr[1]);
@@ -99,15 +95,14 @@ function App() {
       isMounted.current = true;
     }
 
-  }, [Q]);
+  }, [cartQ]);
 
   return (
     <>
-      {/* <Nav Q={Q} clsN={clsN} /> */}
-      <Nav  arr1={arr1} clsO={clsO} Q={Q} clsN={clsN} />
+      <Nav  clsO={clsO} arr1={arr1} Q={cartQ.quantity} clsN={clsN} />
       <Header />
-      <OrderItemList obj={obj} items={items} />
-      <Overlay items={items} obj={obj}  arr1={arr1} clsO={clsO} /> 
+      <OrderItemList dispatchCartQ={dispatchCartQ}  obj={obj} items={items} />
+      <Overlay dispatchCartQ={dispatchCartQ} items={items} obj={obj}  arr1={arr1} clsO={clsO} /> 
     </>
   );
 }
