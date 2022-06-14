@@ -60,6 +60,7 @@ function App() {
   const isMounted  = useRef(false);
 
   let obj = {
+    
     i1: {
       value: item1,
       func: setItem1,

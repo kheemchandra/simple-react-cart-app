@@ -3,6 +3,15 @@ import React from "react";
 import cls from "./CartItem.module.css";
 
 const CartItem = (props) => {
+
+  const decreaseCartItemHandler = (event) => {
+    props.changeQuantity(q => q-1);
+  };
+
+  const increaseCartItemHandler = (event) => {
+    props.changeQuantity(q => q+1);
+  };
+
   return (
     <li className={cls["cartitem"]}>
       <ul className={cls["cartitem-left"]}>
@@ -20,10 +29,10 @@ const CartItem = (props) => {
       </ul>
       <ul className={cls["cartitem-right"]}>
         <li>
-          <button className={cls["cartitem-right__button"]}>&#8211;</button>
+          <button onClick={decreaseCartItemHandler} className={cls["cartitem-right__button"]}>&#8211;</button>
         </li>
         <li>
-          <button className={cls["cartitem-right__button"]}>+</button>
+          <button onClick={increaseCartItemHandler} className={cls["cartitem-right__button"]}>+</button>
         </li>
       </ul>
     </li>
