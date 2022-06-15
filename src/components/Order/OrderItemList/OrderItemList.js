@@ -11,7 +11,6 @@ const OrderItemList = (props) => {
       key={item.id}
       id={item.id}
       dispatchEntries={props.dispatchEntries}
-      dispatchCartQ={props.dispatchCartQ}
       name={item.name}
       description={item.description}
       price={item.price}

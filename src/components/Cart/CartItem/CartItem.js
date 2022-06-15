@@ -6,12 +6,10 @@ const CartItem = (props) => {
 
   const decreaseCartItemHandler = (event) => {
     props.dispatchEntries({id: props.id, quantity: -1});
-    props.dispatchCartQ(-1);
   };
 
   const increaseCartItemHandler = (event) => {
     props.dispatchEntries({id: props.id, quantity: 1});
-    props.dispatchCartQ(1);
   };
 
   return (

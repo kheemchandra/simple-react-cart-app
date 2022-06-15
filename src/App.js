@@ -45,20 +45,17 @@ const items = [
   },
 ];
 
-const cartReducer = (state, action) => {
-  return { quantity: state.quantity + action}
-};
-
 // action = {id: 'i4', quantity: 10}
 const entriesReducer = (state, action) => {
   let {id, quantity} = action;
-  state[id]['quantity'] += quantity;
-  return state;
+  let newState = {...state};
+  newState[id]['quantity'] += quantity;
+  return newState;
 };
 
 function App() {
 
-  const [cartQ, dispatchCartQ] = useReducer(cartReducer, {quantity: 0});
+  const [cartQ, setCartQ] = useState(0);
 
   const [entries, dispatchEntries] = useReducer(entriesReducer, {
     i1:{
@@ -93,12 +90,20 @@ function App() {
 
   }, [cartQ]);
 
+  useEffect(() => {
+    let total = 0;
+    for(let id in entries){
+      total += entries[id]['quantity'];
+    }
+    setCartQ(total);
+  }, [entries, ...Object.entries(entries).map(entry => entry[1]['quantity'])]);
+
   return (
     <>
-      <Nav  clsO={clsO} arr1={arr1} Q={cartQ.quantity} clsN={clsN} />
+      <Nav  clsO={clsO} arr1={arr1} Q={cartQ} clsN={clsN} />
       <Header />
-      <OrderItemList dispatchEntries={dispatchEntries} dispatchCartQ={dispatchCartQ}  items={items} />
-      <Overlay entries={entries} dispatchEntries={dispatchEntries} dispatchCartQ={dispatchCartQ} items={items} arr1={arr1} clsO={clsO} /> 
+      <OrderItemList dispatchEntries={dispatchEntries} items={items} />
+      <Overlay entries={entries} dispatchEntries={dispatchEntries} items={items} arr1={arr1} clsO={clsO} /> 
     </>
   );
 }

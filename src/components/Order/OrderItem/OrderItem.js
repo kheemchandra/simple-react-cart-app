@@ -10,7 +10,6 @@ const OrderItem = (props) => {
 
   const addItemHandler = (event) => {
     event.preventDefault();
-    props.dispatchCartQ(amount);
     props.dispatchEntries({id: props.id, quantity: amount})
 
   };

@@ -22,7 +22,6 @@ const CartItemList = (props) => {
           key={id}
           id={id}
           dispatchEntries={props.dispatchEntries}
-          dispatchCartQ={props.dispatchCartQ}
           name={item.name}
           price={item.price}
           quantity={props.entries[id]['quantity']}
