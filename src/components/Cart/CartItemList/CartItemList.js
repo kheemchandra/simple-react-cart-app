@@ -7,24 +7,25 @@ import cls from "./CartItemList.module.css";
 const CartItemList = (props) => {
   let totalCost = 0;
   let content = [];
-  const entries = Object.entries(props.obj);
+  const entries = Object.entries(props.entries);
   entries.forEach((entry) => {
     let id = entry[0];
-    let value = entry[1].value;
-    if (value) {
+    let quantity = entry[1].quantity;
+    if (quantity) {
       let item = props.items.filter((i) => {
         return i.id === id;
       })[0];
-      totalCost += value * +item.price;
+      totalCost += quantity * +item.price;
 
       content.push(
         <CartItem
+          key={id}
+          id={id}
+          dispatchEntries={props.dispatchEntries}
           dispatchCartQ={props.dispatchCartQ}
-          changeQuantity={props.obj[id]["func"]}
-          key={item.id}
           name={item.name}
           price={item.price}
-          quantity={value}
+          quantity={props.entries[id]['quantity']}
         />
       );
     }
@@ -32,7 +33,7 @@ const CartItemList = (props) => {
 
   const removeOverlayHandler = (event) => {
     props.clsO[1](props.arr1[1]);
-    document.body.style.overflowY = 'auto';
+    document.body.style.overflow = "auto";
   };
 
   const cartOrderHandler = (event) => {
@@ -58,7 +59,11 @@ const CartItemList = (props) => {
           <button onClick={removeOverlayHandler} className={cls["cart-button"]}>
             Close
           </button>
-          <button disabled={!totalCost}  onClick={cartOrderHandler} className={cls["cart-button"]}>
+          <button
+            disabled={!totalCost}
+            onClick={cartOrderHandler}
+            className={cls["cart-button"]}
+          >
             Order
           </button>
         </li>

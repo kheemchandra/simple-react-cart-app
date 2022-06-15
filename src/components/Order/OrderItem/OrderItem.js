@@ -7,12 +7,12 @@ import cls from "./OrderItem.module.css";
 
 const OrderItem = (props) => {
   const[amount, setAmount] = useState(1);
-  const o = props.obj[props.id]; 
 
   const addItemHandler = (event) => {
     event.preventDefault();
-    o.func(o.value + amount);
     props.dispatchCartQ(amount);
+    props.dispatchEntries({id: props.id, quantity: amount})
+
   };
 
   const changeAmountHandler = (event) => {

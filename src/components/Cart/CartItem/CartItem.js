@@ -5,12 +5,12 @@ import cls from "./CartItem.module.css";
 const CartItem = (props) => {
 
   const decreaseCartItemHandler = (event) => {
-    props.changeQuantity(q => q-1);
+    props.dispatchEntries({id: props.id, quantity: -1});
     props.dispatchCartQ(-1);
   };
 
   const increaseCartItemHandler = (event) => {
-    props.changeQuantity(q => q+1);
+    props.dispatchEntries({id: props.id, quantity: 1});
     props.dispatchCartQ(1);
   };
 

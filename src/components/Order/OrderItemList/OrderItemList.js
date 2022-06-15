@@ -8,10 +8,10 @@ const OrderItemList = (props) => {
   let orders = props.items.map((item) => {
     return (
       <OrderItem
-      dispatchCartQ={props.dispatchCartQ}
-      obj={props.obj}
       key={item.id}
       id={item.id}
+      dispatchEntries={props.dispatchEntries}
+      dispatchCartQ={props.dispatchCartQ}
       name={item.name}
       description={item.description}
       price={item.price}
