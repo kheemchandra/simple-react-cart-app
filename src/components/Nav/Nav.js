@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { ContextOverlay } from "../context/context";
 
 import cls from "./Nav.module.css";
 
@@ -6,8 +8,10 @@ import cls from "./Nav.module.css";
 
 const Nav = (props) => {  
   
+  const ctxOverlay = useContext(ContextOverlay);
+
   const addOverlayHandler = (event) => {
-    props.clsO[1](props.arr1[0]);    
+    ctxOverlay.clsO[1](ctxOverlay.arr1[0]);    
     document.body.style.overflowY = 'hidden';
   };
 

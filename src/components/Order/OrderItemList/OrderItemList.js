@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { ContextItems } from "../../context/context";
 
 import OrderItem from "../OrderItem/OrderItem";
 
 import cls from "./OrderItemList.module.css";
 
 const OrderItemList = (props) => {
-  let orders = props.items.map((item) => {
+  const ctx = useContext(ContextItems); 
+
+  let orders = ctx.items.map((item) => {
     return (
       <OrderItem
       key={item.id}
       id={item.id}
-      dispatchEntries={props.dispatchEntries}
       name={item.name}
       description={item.description}
       price={item.price}

@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ContextEntries, ContextItems, ContextOverlay } from "../../context/context";
 
 import CartItem from "../CartItem/CartItem";
 
 import cls from "./CartItemList.module.css";
 
 const CartItemList = (props) => {
+
+  const ctxEntries = useContext(ContextEntries);
+  const ctxItems = useContext(ContextItems);
+  const ctxOverlay = useContext(ContextOverlay);
+
   let totalCost = 0;
   let content = [];
-  const entries = Object.entries(props.entries);
+  const entries = Object.entries(ctxEntries.entries);
   entries.forEach((entry) => {
     let id = entry[0];
     let quantity = entry[1].quantity;
     if (quantity) {
-      let item = props.items.filter((i) => {
+      let item = ctxItems.items.filter((i) => {
         return i.id === id;
       })[0];
       totalCost += quantity * +item.price;
@@ -21,17 +27,17 @@ const CartItemList = (props) => {
         <CartItem
           key={id}
           id={id}
-          dispatchEntries={props.dispatchEntries}
+          dispatchEntries={ctxEntries.dispatchEntries}
           name={item.name}
           price={item.price}
-          quantity={props.entries[id]['quantity']}
+          quantity={ctxEntries.entries[id]['quantity']}
         />
       );
     }
   });
 
   const removeOverlayHandler = (event) => {
-    props.clsO[1](props.arr1[1]);
+    ctxOverlay.clsO[1](ctxOverlay.arr1[1]);
     document.body.style.overflow = "auto";
   };
 

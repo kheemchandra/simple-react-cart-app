@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import { ContextEntries } from "../../context/context"
 
 import Button from "../../UI/Button/Button";
 
@@ -8,9 +10,11 @@ import cls from "./OrderItem.module.css";
 const OrderItem = (props) => {
   const[amount, setAmount] = useState(1);
 
+  const ctx = useContext(ContextEntries);
+
   const addItemHandler = (event) => {
     event.preventDefault();
-    props.dispatchEntries({id: props.id, quantity: amount})
+    ctx.dispatchEntries({id: props.id, quantity: amount});
 
   };
 
